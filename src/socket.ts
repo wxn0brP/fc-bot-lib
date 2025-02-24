@@ -1,12 +1,18 @@
-import { io } from "socket.io-client";
-const link = process.env.socketLink || "https://fusion.ct8.pl/bot";
+import { io, Socket } from "socket.io-client";
+const defaultLink = process.env.socketLink || "https://fusion.ct8.pl/bot";
 
-const socket = io(link, {
-    transports: ["websocket"],
-    auth: {
-        token: null
-    },
-    autoConnect: false
-});
+let socket: Socket;
+
+export function initSocket(token: string, link?: string) {
+    socket = io(link || defaultLink, {
+        transports: ["websocket"],
+        auth: {
+            token
+        },
+        autoConnect: false
+    });
+
+    return socket;
+}
 
 export default socket;

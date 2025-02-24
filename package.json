@@ -1,7 +1,7 @@
 {
     "name": "fc-bot",
     "version": "0.0.1",
-    "main": "src/index.js",
+    "main": "dist/index.js",
     "author": "wxn0brP",
     "license": "MIT",
     "type": "module",

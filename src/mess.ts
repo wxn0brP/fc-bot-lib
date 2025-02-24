@@ -1,4 +1,4 @@
-import { ClientType } from ".";
+import { Client } from "./types/client";
 import { Embed, MessRaw } from "./types/types";
 
 class Mess implements MessRaw {
@@ -12,10 +12,10 @@ class Mess implements MessRaw {
     readonly embed?: Embed;
     readonly [key: string]: any;
 
-    client: ClientType;
+    client: Client;
     frMeta: string;
 
-    constructor(client: ClientType, mess: MessRaw) {
+    constructor(client: Client, mess: MessRaw) {
         this.client = client;
         Object.assign(this, mess);
 

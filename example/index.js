@@ -12,5 +12,5 @@ client.on("mess", (msg) => {
     console.log("mess:", msg.msg);
 });
 
-client.login("token");
+client.login("token", "custom link (optional)");
 await client.enableCmd("!", import.meta.dirname+"/cmd");
