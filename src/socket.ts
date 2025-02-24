@@ -6,7 +6,7 @@ const socket = io(link, {
     auth: {
         token: null
     },
-    autoconnect: false
+    autoConnect: false
 });
 
 export default socket;
