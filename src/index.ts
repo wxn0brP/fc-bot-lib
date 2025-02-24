@@ -17,12 +17,17 @@ const client: Client = {
     emitEvent: eventEmitter.emit,
     cmd: new cmdEngine(),
 
-    login(token: string, link?: string) {
+    login(token: string, link?: string): Promise<void> {
         this.socket = initSocket(token, link);
         initSocketEvent();
         this.socket.connect();
 
-        this.socket.emit("get.bot.info", (data: { _id: Id, name: string }) => client.botInfo = data);
+        return new Promise(r => {
+            this.socket.emit("get.bot.info", (data: { _id: Id, name: string }) => {
+                client.botInfo = data;
+                r();
+            });
+        })
     },
 
     async enableCmd(prefix: string, dirPath: string, opts: EnableCmd_opts = {}) {

@@ -12,6 +12,6 @@ export interface Client {
     on: EventEmitter["on"];
     emitEvent: (event: string, ...args: any[]) => boolean;
     cmd: CommandEngine;
-    login: (token: string) => void;
+    login: (token: string) => Promise<void>;
     enableCmd: (prefix: string, dirPath: string, opts?: EnableCmd_opts) => Promise<void>;
 }
